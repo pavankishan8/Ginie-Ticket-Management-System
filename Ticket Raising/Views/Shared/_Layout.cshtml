@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Gunie Ticket Software</title>
+    <title>@ViewBag.Title - Ginie Ticket Software</title>
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
@@ -12,7 +12,7 @@
     <div class="navbar navbar-fixed-top" style="height:90px; border:solid 2px white; background-color:#36ceff">
         <div class="container">
             <div>
-                <h1 style="text-align:center; color:white; text-shadow:10px; font-family:Arial, Helvetica, sans-serif ;font-weight:400">&nbsp;Gunie Ticket Management System</h1>
+                <h1 style="text-align:center; color:white; text-shadow:10px; font-family:Arial, Helvetica, sans-serif ;font-weight:400">&nbsp;Ginie Ticket Management System</h1>
             </div>
         </div>
     </div>
@@ -21,12 +21,11 @@
 
     <div class="container body-content">
         @RenderBody()
-
-        <footer class="footer navbar-fixed-bottom" style="color:black;text-align:center">
-            <hr />
-            <p>Gunie Ticket Software - @DateTime.Now.Year</p>
-            <p>&copy; All Rights Reserved</p>
-        </footer>
+        <div class="content-wrapper">
+            <footer class="footer navbar-fixed-bottom" style="color:black;text-align:center">
+                <p>&copy; Ginie Ticket Software - @DateTime.Now.Year</p>
+            </footer>
+        </div>
     </div>
 
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
