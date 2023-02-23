@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TicketModelStoreContainer" CdmEntityContainer="TicketEntities">
+    <EntitySetMapping Name="Tickets">
+      <EntityTypeMapping TypeName="TicketModel.Ticket">
+        <MappingFragment StoreEntitySet="Ticket">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="AssignedTo" ColumnName="AssignedTo" />
+          <ScalarProperty Name="ProblemDescription" ColumnName="ProblemDescription" />
+          <ScalarProperty Name="ProblemStatement" ColumnName="ProblemStatement" />
+          <ScalarProperty Name="ResolvedTime" ColumnName="ResolvedTime" />
+          <ScalarProperty Name="RaisedTime" ColumnName="RaisedTime" />
+          <ScalarProperty Name="SystemNo" ColumnName="SystemNo" />
+          <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+          <ScalarProperty Name="TicketNo" ColumnName="TicketNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tktDepartments">
+      <EntityTypeMapping TypeName="TicketModel.tktDepartment">
+        <MappingFragment StoreEntitySet="tktDepartment">
+          <ScalarProperty Name="DeptName" ColumnName="DeptName" />
+          <ScalarProperty Name="DeptId" ColumnName="DeptId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tktEmployees">
+      <EntityTypeMapping TypeName="TicketModel.tktEmployee">
+        <MappingFragment StoreEntitySet="tktEmployee">
+          <ScalarProperty Name="DeptId" ColumnName="DeptId" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="EmpName" ColumnName="EmpName" />
+          <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

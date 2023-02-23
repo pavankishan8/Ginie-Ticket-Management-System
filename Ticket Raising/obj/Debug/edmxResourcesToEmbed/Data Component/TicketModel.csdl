@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TicketModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="TicketEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Tickets" EntityType="TicketModel.Ticket" />
+    <EntitySet Name="tktDepartments" EntityType="TicketModel.tktDepartment" />
+    <EntitySet Name="tktEmployees" EntityType="TicketModel.tktEmployee" />
+    <AssociationSet Name="FK__Ticket__Assigned__42E1EEFE" Association="TicketModel.FK__Ticket__Assigned__42E1EEFE">
+      <End Role="tktEmployee" EntitySet="tktEmployees" />
+      <End Role="Ticket" EntitySet="Tickets" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ticket__EmpId__41EDCAC5" Association="TicketModel.FK__Ticket__EmpId__41EDCAC5">
+      <End Role="tktEmployee" EntitySet="tktEmployees" />
+      <End Role="Ticket" EntitySet="Tickets" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tktEmploy__DeptI__3F115E1A" Association="TicketModel.FK__tktEmploy__DeptI__3F115E1A">
+      <End Role="tktDepartment" EntitySet="tktDepartments" />
+      <End Role="tktEmployee" EntitySet="tktEmployees" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Ticket">
+    <Key>
+      <PropertyRef Name="TicketNo" />
+    </Key>
+    <Property Name="TicketNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmpId" Type="Int32" Nullable="false" />
+    <Property Name="SystemNo" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="RaisedTime" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ResolvedTime" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ProblemStatement" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ProblemDescription" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="AssignedTo" Type="Int32" />
+    <Property Name="Status" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tktEmployee" Relationship="TicketModel.FK__Ticket__Assigned__42E1EEFE" FromRole="Ticket" ToRole="tktEmployee" />
+    <NavigationProperty Name="tktEmployee1" Relationship="TicketModel.FK__Ticket__EmpId__41EDCAC5" FromRole="Ticket" ToRole="tktEmployee" />
+  </EntityType>
+  <EntityType Name="tktDepartment">
+    <Key>
+      <PropertyRef Name="DeptId" />
+    </Key>
+    <Property Name="DeptId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DeptName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tktEmployees" Relationship="TicketModel.FK__tktEmploy__DeptI__3F115E1A" FromRole="tktDepartment" ToRole="tktEmployee" />
+  </EntityType>
+  <EntityType Name="tktEmployee">
+    <Key>
+      <PropertyRef Name="EmpId" />
+    </Key>
+    <Property Name="EmpId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmpName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DeptId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Tickets" Relationship="TicketModel.FK__Ticket__Assigned__42E1EEFE" FromRole="tktEmployee" ToRole="Ticket" />
+    <NavigationProperty Name="Tickets1" Relationship="TicketModel.FK__Ticket__EmpId__41EDCAC5" FromRole="tktEmployee" ToRole="Ticket" />
+    <NavigationProperty Name="tktDepartment" Relationship="TicketModel.FK__tktEmploy__DeptI__3F115E1A" FromRole="tktEmployee" ToRole="tktDepartment" />
+  </EntityType>
+  <Association Name="FK__Ticket__Assigned__42E1EEFE">
+    <End Type="TicketModel.tktEmployee" Role="tktEmployee" Multiplicity="0..1" />
+    <End Type="TicketModel.Ticket" Role="Ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tktEmployee">
+        <PropertyRef Name="EmpId" />
+      </Principal>
+      <Dependent Role="Ticket">
+        <PropertyRef Name="AssignedTo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ticket__EmpId__41EDCAC5">
+    <End Type="TicketModel.tktEmployee" Role="tktEmployee" Multiplicity="1" />
+    <End Type="TicketModel.Ticket" Role="Ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tktEmployee">
+        <PropertyRef Name="EmpId" />
+      </Principal>
+      <Dependent Role="Ticket">
+        <PropertyRef Name="EmpId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tktEmploy__DeptI__3F115E1A">
+    <End Type="TicketModel.tktDepartment" Role="tktDepartment" Multiplicity="1" />
+    <End Type="TicketModel.tktEmployee" Role="tktEmployee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tktDepartment">
+        <PropertyRef Name="DeptId" />
+      </Principal>
+      <Dependent Role="tktEmployee">
+        <PropertyRef Name="DeptId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
