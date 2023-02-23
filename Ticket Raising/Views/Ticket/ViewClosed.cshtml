@@ -1,0 +1,37 @@
+﻿@model List<TicketRaising.Data_Component.Ticket>
+@{
+    ViewBag.Title = "ViewClosed";
+    var comp = TempData["timeBound"] as TicketRaising.Data_Component.TicketImpl;
+}
+
+<h2>Closed Tickets</h2>
+<hr />
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>Ticket Id</th>
+        <th>Employee ID</th>
+        <th>Time Taken</th>
+        <th>Problem </th>
+        <th>System Number</th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.TicketNo</td>
+            <td>@item.EmpId</td>
+            <td>@comp.calculateTimeBound(item.RaisedTime, item.ResolvedTime)</td>
+            <td>@item.ProblemStatement</td>
+            <td>@item.SystemNo</td>
+
+
+        </tr>
+    }
+</table>
+
+<div>
+    @Html.ActionLink("Back", "ISSDaction", "Ticket", new { @class = "btn btn-primary" })
+</div>
+
+

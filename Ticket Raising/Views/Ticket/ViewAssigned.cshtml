@@ -1,0 +1,36 @@
+﻿@model List<TicketRaising.Data_Component.Ticket>
+
+@{
+    ViewBag.Title = "ViewAssigned";
+}
+
+<h2 style="text-align:center">Assigned Tickets</h2>
+<hr />
+
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>Ticket Id</th>
+
+        <th>Raised Time</th>
+        <th>Problem </th>
+        <th>System Number</th>
+        <th>Options</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.TicketNo</td>
+
+            <td>@item.RaisedTime</td>
+            <td>@item.ProblemStatement</td>
+            <td>@item.SystemNo</td>
+
+            <td>@Html.ActionLink("View More", "ViewAssignedTicket", "Ticket", new { id = item.TicketNo }, new { @class = "btn btn-info" })</td>
+        </tr>
+    }
+</table>
+<div>
+    @Html.ActionLink("Back", "ISSDaction", "Ticket", new { @class = "btn btn-primary" })
+</div>
+

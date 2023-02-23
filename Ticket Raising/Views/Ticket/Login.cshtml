@@ -1,0 +1,84 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Login Page</title>
+    <style>
+
+        body {
+            background-image: url('../../Images/d25w0pz-7c81c8c0-17e5-4de3-94b4-e6e7bac5c043.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        #loginstyle {
+            border: solid 1px rgb(198,198,198);
+            padding-left: 50px;
+            border-radius: 10px;
+            background-color: #FFF8DC;
+        }
+    </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-8"></div>
+            <div class="col-md-4">
+                <div id="loginstyle">
+                    <br />
+                    <div style="text-align:center; margin:15px 70px 10px 10px;">
+                        <i class="fa-solid fa-user fa-5x"></i>
+                        <h2>Login</h2>
+                    </div>
+                    <hr style="margin: 15px 70px 10px 10px; color:black" />
+                    @using (Html.BeginForm())
+                    {
+                        <table>
+                            <tr>
+                                <td>Email:</td>
+                            </tr>
+
+                            <tr>
+                                <td> @Html.Editor("email", new { htmlAttributes = new { @class = "form-control", placeholder = "Enter The Email", @style = "width:240px" } })</td>
+                            </tr>
+                            <tr>
+                                <td> Password:</td>
+                            </tr>
+                                                        <tr>
+
+                                <td> @Html.Editor("pwd", new { htmlAttributes = new { @class = "form-control", type = "password", placeholder = "Enter The Password", @style = "width:240px" } })</td>
+
+                            </tr>
+
+                        </table>
+
+                        @*<p class="textBox">
+                 @Html.Editor("email")
+            </p>
+            <p class="textBox">
+                @Html.Editor("pwd")
+            </p>*@
+                        <br />
+                        <p style="text-align:center">
+                            <button class="btn btn-success" style="width:100px; margin: 10px 60px 10px 10px;">Login</button>
+                        </p>
+                        <br /><br />
+                        <p>
+                            @Html.ValidationSummary("", new { style = "color: red" })
+                        </p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+

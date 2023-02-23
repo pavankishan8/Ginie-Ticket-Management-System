@@ -1,0 +1,53 @@
+﻿@model List<TicketRaising.Data_Component.Ticket>
+
+@{
+    ViewBag.Title = "MGRaction";
+    var allIssd = TempData["ISSDemp"] as TicketRaising.Data_Component.tktEmployee;
+    var comp = TempData["timeBound"] as TicketRaising.Data_Component.TicketImpl;
+}
+
+
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<h4 style="text-align:right">Welcome - @ViewBag.Message &nbsp;@Html.ActionLink(" ", "Login", "Ticket", new { @class = "btn btn-primary  fa-solid fa-power-off" })</h4>
+
+@if (TempData["alert"] != null)
+{
+    <script type="text/javascript">
+            window.onload = function () {
+                alert("@TempData["alert"]");
+            };
+    </script>
+}
+    <h1>Manager Dashboard</h1>
+    <hr />
+<h3 style="text-align:center">Active Tickets</h3>
+<hr />
+<table class="table table-bordered table-striped">
+    <tr style="text-transform:uppercase">
+        <th>Ticket Id</th>
+        <th>Employee ID</th>
+        <th>Department</th>
+        <th>Raised Time</th>
+        <th>Problem </th>
+        <th>Options</th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>@item.TicketNo</td>
+        <td>@item.EmpId</td>
+        <td>@comp.getDeptOnEid(item.EmpId)</td>
+        <td>@item.RaisedTime</td>
+        <td>@item.ProblemStatement</td>
+        <td>@Html.ActionLink("View More", "Assign", "Ticket", new { id = item.TicketNo }, new { @class = "btn btn-info" })</td>
+    </tr>
+    }
+</table>
+
+
+
+

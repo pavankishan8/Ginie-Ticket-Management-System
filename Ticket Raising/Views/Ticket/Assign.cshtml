@@ -1,0 +1,114 @@
+﻿@model TicketRaising.Data_Component.Ticket
+
+@{
+    ViewBag.Title = "Assign";
+
+    var allISSDemp = TempData["ISSDemp"] as List<SelectListItem>;
+
+}
+
+<h2>Assign Ticket</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @*<div class="form-group">
+            @Html.LabelFor(model => model.EmpId, "EmpId", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(Model => "EmpId", new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.EmpId, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+    <div class="form-group">
+        @Html.Label( "Ticket Number", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.TicketNo, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+            @Html.HiddenFor(model => model.TicketNo, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+            @Html.ValidationMessageFor(model => model.TicketNo, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Employee ID", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.EmpId, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+            @Html.HiddenFor(model => model.EmpId, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+
+            @Html.ValidationMessageFor(model => model.EmpId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label("System Number", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.SystemNo, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+            @Html.HiddenFor(model => model.SystemNo, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+
+            @Html.ValidationMessageFor(model => model.SystemNo, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Raised Time", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.RaisedTime, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+            @Html.HiddenFor(model => model.RaisedTime, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+
+            @Html.ValidationMessageFor(model => model.RaisedTime, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        @Html.Label("Problem Statement", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.ProblemStatement, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+            @Html.HiddenFor(model => model.ProblemStatement, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+
+            @Html.ValidationMessageFor(model => model.ProblemStatement, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Problem Description", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.ProblemDescription, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+            @Html.HiddenFor(model => model.ProblemDescription, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+
+            @Html.ValidationMessageFor(model => model.ProblemDescription, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+            @Html.LabelFor(model => model.AssignedTo, "Assign To", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+               @Html.DropDownListFor(Model=>Model.AssignedTo,allISSDemp,new {@class = "form-control" })
+              
+            </div>
+        </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+            @Html.HiddenFor(model => model.Status, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+
+            @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Assign" class="btn btn-success" style="width:140px" />
+            @Html.ActionLink("Back", "MGRaction", "Ticket", new { @class = "btn btn-primary", @style = "width:135px"})
+        </div>
+    </div>
+</div>
+}
+
+

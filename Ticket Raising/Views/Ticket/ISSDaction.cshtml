@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewBag.Title = "ISSDaction";
+}
+
+<style>
+    ul {
+        list-style-type: none;
+        margin-left: auto;
+        padding: 0;
+        width: 200px;
+        background-color: #f1f1f1;
+    }
+
+    li a {
+        display: block;
+        color: #000;
+        padding: 8px 16px;
+        text-decoration: none;
+    }
+
+        /* Change the link color on hover */
+        li a:hover {
+            background-color: #5981f1;
+            color: white;
+            text-decoration: none;
+        }
+</style>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<h4 style="text-align:right">Welcome - @ViewBag.Message &nbsp;@Html.ActionLink(" ", "Login", "Ticket", new { @class = "btn btn-primary  fa-solid fa-power-off" })</h4>
+
+<h1>ISSD Team Dashboard</h1>
+<hr />
+
+
+@if (TempData["alert"] != null)
+{
+    <script type="text/javascript">
+            window.onload = function () {
+                alert("@TempData["alert"]");
+            };
+    </script>
+}
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+                <div class="menu">
+                    <ul>
+                        <li>@Html.ActionLink("Assigned Tickets", "ViewAssigned")</li>
+                        <li>
+                            @Html.ActionLink("Closed Tickets", "ViewClosed")
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+                <div class="col-md-9">
+
+                    <h1 style="text-align:center">Tickets</h1>
+                    <hr />
+                    <p style="text-align:center; padding:10px">Gunie Ticket Management System is a software that allows you to manage your IT tickets from a single source. You can keep track of your current status and work on resolved tickets, all in one place.</p>
+                </div>
+            </div>
+
+        </div>
+
+</body>
+

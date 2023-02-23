@@ -1,0 +1,46 @@
+﻿@model List<TicketRaising.Data_Component.Ticket>
+
+@{
+    ViewBag.Title = "VeiwTicket";
+    var comp = TempData["timeBound"] as TicketRaising.Data_Component.TicketImpl;
+    
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<div>
+    
+    <h2 style="text-align:center">List of Raised Tickets  </h2>
+
+</div>
+
+
+<hr />
+<table class="table table-bordered table-striped table-hover">
+    <tr style="text-transform:uppercase">
+        <th>Ticket Id</th>
+        
+        <th>Raised Time</th>
+        <th>Problem </th>
+        <th>Status</th>
+        <th>Time Taken</th>
+        <th>Assigned To</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.TicketNo</td>
+           
+            <td>@item.RaisedTime</td>
+            <td>@item.ProblemStatement</td>
+            <td>@item.Status</td>
+            <td>@comp.calculateTimeBound(item.RaisedTime,item.ResolvedTime)</td>
+            <td>@comp.getbasedOnAid(item.AssignedTo.ToString())</td>
+        </tr>
+    }
+</table>
+
+<div>
+    <p>@Html.ActionLink("Back", "EMPaction", "Ticket", new { @class = "btn btn-primary" })</p>
+</div>
+
