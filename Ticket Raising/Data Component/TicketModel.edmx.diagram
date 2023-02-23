@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a6ecac6121e0476485efecb15869d73c" Name="Diagram1">
+        <EntityTypeShape EntityType="TicketModel.Ticket" Width="1.5" PointX="5.625" PointY="1" />
+        <EntityTypeShape EntityType="TicketModel.tktDepartment" Width="1.5" PointX="1.125" PointY="1.75" />
+        <EntityTypeShape EntityType="TicketModel.tktEmployee" Width="1.5" PointX="3.375" PointY="1.25" />
+        <AssociationConnector Association="TicketModel.FK__Ticket__Assigned__42E1EEFE" />
+        <AssociationConnector Association="TicketModel.FK__Ticket__EmpId__41EDCAC5" />
+        <AssociationConnector Association="TicketModel.FK__tktEmploy__DeptI__3F115E1A" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
